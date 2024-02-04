@@ -18,9 +18,9 @@
 #define TRUE 1
 #define EXECUTE_BLOCK FALSE
 
-#define FINISHED_PART_1 FALSE
-#define FINISHED_PART_2 FALSE
-#define FINISHED_PART_3 FALSE
+#define FINISHED_PART_1 TRUE
+#define FINISHED_PART_2 TRUE
+#define FINISHED_PART_3 TRUE
 
 #include <algorithm>
 #include <cassert>
@@ -62,11 +62,29 @@ namespace csc232
 {
     // Add any user-defined functions prescribed in your assignment below
     // TODO: 1.1 Declare the Shape interface below
-
+    class Shape{
+    public:
+        virtual double area() = 0;
+        virtual double perimeter() = 0;
+        virtual ~Shape() = default;
+    };
     // TODO: 2.1 Provide an inline definition of the Square class below
-
+    class Square : public Shape{
+        private:
+            double side = 1;
+        public:
+            double area() override {return side * side;}
+            double perimeter() override { return side * 4;}
+            ~Square() = default;
+    };
     // TODO: 3.1 Provide an inline definition of the Circle class below
-
+    class Circle : public Shape{
+        public:
+            double radius = 1.0;
+            double area() override {return 3.14*(radius*radius);}
+            double perimeter() override {return 3.14*(2*radius);}
+            ~Circle() = default;
+    };
     // DO NOT Modify anything below this line
 } // namespace csc232
 
